@@ -183,6 +183,9 @@ func (r *Results) AsNode() (*Node, error) {
 		return nil, r.Error
 	}
 
+    if len(r.Data) == 0 {
+        return nil, nil
+    }
 	nodeData := r.Data[0].([]interface{})[0].(map[string]interface{})
 	node := new(Node)
 	node.Params = nodeData["data"].(map[string]interface{})
